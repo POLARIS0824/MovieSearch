@@ -21,4 +21,9 @@ Cocktail{name='Cocktail0', baseStrength=10.0, baseVolume=50, nonAlcoholicBeverag
 
 **注意：选手只需选择任意一门语言进行作答**
 
-提示：善用 IDE 的各项功能
+提示：
+1. 针对 C 语言，你需要详细了解 `qsort()` 的用法，并实现相关函数的定义
+2. 针对 Java 语言，请仔细查看目前代码的编译错误
+3. 针对 ObjectiveC 语言，请仔细查看代码运行时的错误
+4. 针对 Swift 语言，请仔细查看代码的编译错误
+5. 请记住，将 Cocktail 对象格式化输出
