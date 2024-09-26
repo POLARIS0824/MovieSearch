@@ -45,7 +45,8 @@ void printCocktail(Cocktail cocktail)
     printf("nonAlcoholicBeveragesVolume=%i\n",cocktail.nonAlcoholicBeveragesVolume);
 }
 
-//以下代码涉及qsort函数以及指针，暂未学习，通过GitHub copilot生成
+//qsort函数是C语言标准库中的一个排序函数，用于对数组进行排序，必须使用指针来完成
+//以下代码涉及qsort函数以及指针，通过GitHub copilot生成
 //版本号v1.234.0，prompt为：使用qsort函数对Cocktail数组进行排序
 
 int compareCocktails(const void *a, const void *b) //这是两个待比较元素的指针
@@ -55,7 +56,7 @@ int compareCocktails(const void *a, const void *b) //这是两个待比较元素
     float alcoholContentA = calculateAlcohol(cocktailA);
     float alcoholContentB = calculateAlcohol(cocktailB);
 
-//比较函数，返回值为负数，零或正数，分别表示第一个参数小于，等于或大于第二个参数（已经理解）
+//比较函数，返回值为负数，零或正数，分别表示第一个参数小于，等于或大于第二个参数
 
     // 如果 A 是无酒精饮料，排在前面
     if (alcoholContentA == 0) return -1;

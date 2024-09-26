@@ -18,7 +18,7 @@ Cocktail{name='Cocktail1', baseStrength=30.0, baseVolume=100, nonAlcoholicBevera
 Cocktail{name='Cocktail2', baseStrength=12.8, baseVolume=50, nonAlcoholicBeveragesVolume=150}
 Cocktail{name='Cocktail0', baseStrength=10.0, baseVolume=50, nonAlcoholicBeveragesVolume=120}
 ```
-
+ 
 **注意：选手只需选择任意一门语言进行作答**
 
 提示：

@@ -1,8 +1,9 @@
-
+//头文件保护符，确保头文件只被包含一次
 #ifndef JUMP_H
 #define JUMP_H
 
 // Your code here
+#include <unistd.h>
 #include <sys/types.h>
 #include <stdio.h>
 
@@ -25,7 +26,12 @@
 // Your code here
 typedef struct
 {
+    int pipefd[2]; //一个整型数组，用于存储管道的文件描述符。
+    //pipefd[0] 是管道的读端，pipefd[1] 是管道的写端
+    pid_t pid;  //一个进程ID，用于存储子进程的PID
 } Process;
 
+void partA();
+void partB();
 
 #endif // JUMP_H
