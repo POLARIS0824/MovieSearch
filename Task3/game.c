@@ -56,6 +56,7 @@ void fight(Character *xiaoming, Character *BOSShuaixuezhang)
         //小明攻击怪物
         int damage = calculate_damage(xiaoming->attack_damage, BOSShuaixuezhang->armor);
         BOSShuaixuezhang->health -= damage;
+        //->运算符用于通过指针访问结构体成员。它是结构体指针的成员访问运算符
         printf("小明对BOSS造成了 %d 伤害。 BOSS现在的生命值是 %d.\n", damage, BOSShuaixuezhang->health);
         printf("小明的生命值是: %d, BOSS的生命值是: %d\n", xiaoming->health, BOSShuaixuezhang->health);
         if (BOSShuaixuezhang->health <= 0)

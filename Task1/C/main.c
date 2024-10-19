@@ -53,6 +53,14 @@ int compareCocktails(const void *a, const void *b) //这是两个待比较元素
 {
     Cocktail cocktailA = *(Cocktail *)a; //将void指针转换为Cocktail指针
     Cocktail cocktailB = *(Cocktail *)b; //暂未理解透彻，学习中
+    /*
+    a是一个const void *类型的指针，指向一个待比较的元素。
+    (Cocktail *)a表示将a转换为Cocktail *类型的指针，即指向Cocktail结构体的指针。
+    这一步是类型转换，将通用的void指针转换为具体类型的指针
+    *是解引用运算符，用于访问指针指向的值。
+    *(Cocktail *)a表示解引用(Cocktail *)a，即访问a指向的Cocktail结构体的值。
+    这一步是解引用，将指针指向的内存位置的值取出来
+    */
     float alcoholContentA = calculateAlcohol(cocktailA);
     float alcoholContentB = calculateAlcohol(cocktailB);
 

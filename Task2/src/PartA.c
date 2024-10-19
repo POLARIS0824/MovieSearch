@@ -47,8 +47,8 @@ void partA()
     // 如果 pipe() 函数返回 -1，表示创建管道失败
     if (pipe(pipefd) == -1)
     {
-        perror("pipe");
-        return;
+        perror("pipe");  //"pipe" 是错误前缀，用于说明出错的上下文
+        return;  //可以使用exit直接终止整段程序
     }
 
     // 创建子进程，并将子进程的进程ID存储在pid变量中
@@ -73,8 +73,8 @@ void partA()
         // 从控制台读取输入信息，并存储在 input_msg 数组中
         printf("Enter your answer: ");
         // 将输入的信息写入管道
-        // strlen(input_msg) + 1 用于包括字符串末尾的空字符 '\0'
         scanf("%s", input_msg);
+        // strlen(input_msg) + 1 用于包括字符串末尾的空字符 '\0'
         write(pipefd[1], input_msg, strlen(input_msg) + 1);
         // 关闭管道的写端，表示写入操作完成
         close(pipefd[1]); //关闭写端

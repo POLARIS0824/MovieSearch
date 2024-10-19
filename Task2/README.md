@@ -48,9 +48,9 @@
 This is partA: 
 --------------------
 // 输入
-Enter your answer: Hello
+Enter your answer: Hello                 
 
-// 输出
+// 输出            
 Hello
   _   _       _                  ____  _             _ _       
  | | | |_ __ (_) __ _ _   _  ___/ ___|| |_ _   _  __| (_) ___  
@@ -66,7 +66,7 @@ Hello
 
 在PartA中，我们实现了一个父子进程之间的通信。下面请你补充```PartB.c```和```jump.h```里的```Process```定义，实现父进程与多个子进程之间的管道通信，子进程的数量为20个。由父进程向子进程发送消息```Hello from parent to child [index]```，子进程接收并打印```child [index] receive msg from parent: Hello from parent to child [index]``` (子进程的打印顺序必须是有序的)
 
-**一个错误的输出结果**
+**一个错误的输出结果**          
 ```c
 This is partB: 
 --------------------
