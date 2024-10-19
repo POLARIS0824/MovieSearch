@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         //配置 RecyclerView，为它设置适配器和布局管理器，使它能够正常显示列表内容
         movieAdapter = new MovieAdapter(movies);
         moviesRecyclerView.setAdapter(movieAdapter);
-
+        moviesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //设置按钮点击事件,为搜索按钮设置一个点击事件监听器，当用户点击按钮时，会调用 searchMovies() 方法
         searchButton.setOnClickListener(v -> searchMovies());
     }
