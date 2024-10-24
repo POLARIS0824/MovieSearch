@@ -1,5 +1,7 @@
 package com.example.moviesearch.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -22,6 +24,7 @@ public class MainViewModel extends ViewModel {
     private final MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
+    private static final String TAG = "MainViewModel";
     private final Gson gson = new Gson(); // Gson 实例
 
     public LiveData<List<Movie>> getMovies() {
@@ -54,6 +57,8 @@ public class MainViewModel extends ViewModel {
                     // 获取 API 返回的 JSON 数据
                     String jsonData = response.body().string();
 
+                    Log.d(TAG, "onResponse: "+jsonData);
+
                     // 使用 Gson 解析 JSON 数据为 MovieResponse 对象
                     MovieResponse movieResponse = gson.fromJson(jsonData, MovieResponse.class);
 
@@ -65,6 +70,9 @@ public class MainViewModel extends ViewModel {
                     if (movies == null || movies.isEmpty()) {
                         errorMessage.postValue("未找到影片");
                     } else {
+                        for(Movie movie : movies){
+                            Log.d(TAG, "onResponse: "+movie.getTitle());
+                        }
                         moviesLiveData.postValue(movies);
                     }
                 } catch (Exception e) {

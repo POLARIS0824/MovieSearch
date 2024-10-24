@@ -1,8 +1,13 @@
 package com.example.moviesearch.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Movie {
+    @SerializedName(value = "Title")
     private String title;
+    @SerializedName(value = "Year")
     private String year;
+    @SerializedName(value = "Poster")
     private String poster;
     /* 封装的原则：通过 getter 和 setter 方法来访问和修改这些
     私有变量，从而实现数据的保护，防止外部代码直接修改它们 */
