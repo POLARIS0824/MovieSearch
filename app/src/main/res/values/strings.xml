@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieSearch</string>
+    <string name="poster_image_desc">MoviePoster</string>
 </resources>

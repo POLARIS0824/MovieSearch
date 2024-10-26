@@ -1,15 +1,19 @@
 package com.example.moviesearch.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
+import com.example.moviesearch.MovieDetailActivity;
 import com.example.moviesearch.R;
 import com.example.moviesearch.model.Movie;
 
@@ -18,8 +22,10 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private List<Movie> movies;
+    private final Context context;
 
-    public MovieAdapter(List<Movie> movies) {
+    public MovieAdapter(Context context, List<Movie> movies) {
+        this.context = context;
         this.movies = movies;
     }
 
@@ -36,6 +42,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.title.setText(movie.getTitle());
         holder.year.setText(movie.getYear());
         Glide.with(holder.itemView.getContext()).load(movie.getPoster()).into(holder.poster);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MovieDetailActivity.class);
+            intent.putExtra("movie_id", movie.getImdbID());  // 将电影的 IMDb ID 传递给详情页
+            context.startActivity(intent);  // 启动详情页 Activity
+        });
     }
 
     @Override

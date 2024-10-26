@@ -44,6 +44,8 @@ dependencies {
     implementation("com.google.android.material:material:1.8.0") // Material Components
     implementation("androidx.activity:activity-ktx:1.6.0") // Activity KTX
     implementation("androidx.constraintlayout:constraintlayout:2.1.4") // ConstraintLayout
+    implementation("androidx.transition:transition:1.5.1")
+    implementation("androidx.core:core:1.13.1")
 
     testImplementation("junit:junit:4.13.2") // JUnit 测试库
     androidTestImplementation("androidx.test.ext:junit:1.1.5") // Android 扩展 JUnit
