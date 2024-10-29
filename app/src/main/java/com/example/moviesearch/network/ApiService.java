@@ -9,8 +9,8 @@ public class ApiService {
     private final OkHttpClient client = new OkHttpClient();
 
     //搜索电影
-    public void searchMovies(String query, Callback callback) {
-        String url = "https://www.omdbapi.com/?apikey=" + API_KEY + "&s=" + query;
+    public void searchMovies(String query, int page, Callback callback) {
+        String url = "https://www.omdbapi.com/?apikey=" + API_KEY + "&s=" + query + "&page=" + page;
         Request request = new Request.Builder().url(url).build();
         client.newCall(request).enqueue(callback);
     }
