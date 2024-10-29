@@ -46,6 +46,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4") // ConstraintLayout
     implementation("androidx.transition:transition:1.5.1")
     implementation("androidx.core:core:1.13.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.6")
 
     testImplementation("junit:junit:4.13.2") // JUnit 测试库
     androidTestImplementation("androidx.test.ext:junit:1.1.5") // Android 扩展 JUnit

@@ -27,6 +27,10 @@ public class MainViewModel extends ViewModel {
     private static final String TAG = "MainViewModel";
     private final Gson gson = new Gson(); // Gson 实例
 
+    // 分页控制变量
+    private int currentpage = 1;
+    private boolean isLastPage = false;
+
     public LiveData<List<Movie>> getMovies() {
         return moviesLiveData;
     }
@@ -63,17 +67,27 @@ public class MainViewModel extends ViewModel {
                     MovieResponse movieResponse = gson.fromJson(jsonData, MovieResponse.class);
 
                     // 获取解析后的电影列表
-                    List<Movie> movies = movieResponse.getSearch();
+                    List<Movie> newMovies = movieResponse.getSearch();
 
                     // 检查电影列表是否为空，并更新 UI
                     isLoading.postValue(false);
-                    if (movies == null || movies.isEmpty()) {
-                        errorMessage.postValue("未找到影片");
+                    if (newMovies == null || newMovies.isEmpty()) {
+                        isLastPage = true;  // 如果没有更多数据，标记为最后一页
+                        if (currentpage == 1) {
+                            errorMessage.postValue("未找到影片");
+                        }
                     } else {
+                        currentpage++;  // 增加页码
+                        /*
                         for(Movie movie : movies){
                             Log.d(TAG, "onResponse: "+movie.getTitle());
+                        }  //调试
+                         */
+                        List<Movie> currentMovies = moviesLiveData.getValue();
+                        if (currentMovies != null) {
+                            currentMovies.addAll(newMovies);
+                            moviesLiveData.postValue(currentMovies); // 更新 UI
                         }
-                        moviesLiveData.postValue(movies);
                     }
                 } catch (Exception e) {
                     // 捕获解析异常并更新错误信息
