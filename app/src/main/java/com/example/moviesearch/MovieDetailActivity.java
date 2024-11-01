@@ -66,7 +66,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         // 使用 Glide 加载电影海报
         Glide.with(this)
                 .load(movieDetail.getPoster())
+                // .placeholder(R.drawable.placeholder_image) // 添加占位图
                 .into(posterImageView);
     }
 }
-
