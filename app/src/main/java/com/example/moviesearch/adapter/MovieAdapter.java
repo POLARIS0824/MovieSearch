@@ -2,6 +2,8 @@ package com.example.moviesearch.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.util.Range;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,8 +86,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                         System.currentTimeMillis() // 当前时间戳
                 );
 
-                // 添加到浏览记录
-                HistoryManager.addHistory(history);  // 使用实例调用
+                new Thread(
+                        () -> {
+                            // 添加到浏览记录
+                            HistoryManager.addHistory(history);  // 使用实例调用
+                            // IO操作切换线程，避免卡死
+                        }
+                );
 
                 // 启动详情页 Activity
                 Intent intent = new Intent(itemView.getContext(), MovieDetailActivity.class);
