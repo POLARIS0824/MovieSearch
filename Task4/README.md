@@ -70,3 +70,33 @@ Tip: 实现基础部分即可拿到 **100 分**
 | Flutter         | Dart              | Android, iOS | Google 推出的跨端框架，可以使用一套代码构建 Android/iOS App  |
 
 网络框架，序列化框架，持久化框架等均不作限制，选手可以选用对应技术栈下合适的库进行开发
+
+
+@Preview  
+@Composable  
+fun MovieSearchPagePreview() {  
+    MovieTheme {  
+        MovieSearchPageImpl(  
+            "",  
+            {},  
+            listOf(  
+                Movie(  
+                    "tt0468569", "The Dark Knight", "https://images.app.goo.gl/p2T8Dhnbrrrspqmp6",  
+                    "2008", "Action", "Christopher Nolan", "American"  
+                ),  
+                Movie(  
+                    "tt0468569", "The Dark Knight", "https://images.app.goo.gl/p2T8Dhnbrrrspqmp6",  
+                    "2008", "Action", "Christopher Nolan", "American"  
+                ),  
+                Movie(  
+                    "tt0468569", "The Dark Knight", "https://images.app.goo.gl/p2T8Dhnbrrrspqmp6",  
+                    "2008", "Action", "Christopher Nolan", "American"  
+                ), Movie(  
+                    "tt0468569", "The Dark Knight", "https://images.app.goo.gl/p2T8Dhnbrrrspqmp6",  
+                    "2008", "Action", "Christopher Nolan", "American"  
+                )  
+            )  
+        )  
+        // MovieCard(movie = Movie("tt0468569", "The Dark Knight", "https://images.app.goo.gl/p2T8Dhnbrrrspqmp6", "2008"))  
+    }  
+}

@@ -71,25 +71,32 @@ fun MovieCard(movie: Movie) {
                         .fillMaxWidth(),
                 )
                 Row {
-                    Text(
-                        text = movie.year,
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
+                    movie.year?.let {
+                        Text(
+                            text = it,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                    }  // ?.操作符表示对象为空时什么都不做，对象不为空时就调用let函数，
+                       // 而let函数会将study对象本身作为参数传递到Lambda表达式中
                     Spacer(modifier = Modifier.width(16.dp))
-                    Text(
-                        text = movie.genre,
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
+                    movie.genre?.let {
+                        Text(
+                            text = it,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                    }
                 }
                 Row {
                     Text(
                         text = stringResource(R.string.director),
                         style = MaterialTheme.typography.bodyLarge,
                     )
-                    Text(
-                        text = movie.director,
-                        style = MaterialTheme.typography.bodyLarge,
-                    )
+                    movie.director?.let {
+                        Text(
+                            text = it,
+                            style = MaterialTheme.typography.bodyLarge,
+                        )
+                    }
                 }
                 Text(
                     text =""

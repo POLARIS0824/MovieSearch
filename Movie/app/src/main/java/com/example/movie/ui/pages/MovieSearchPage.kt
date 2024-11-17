@@ -30,19 +30,16 @@ fun MovieSearchPage(movieViewModel: MovieViewModel = viewModel()) {
     val query by movieViewModel.queryText.observeAsState("")  // 使用observeAsState来观察queryText
     val movies by movieViewModel.movieList.observeAsState(emptyList())  // 使用observeAsState来观察movieList
 
-    /*
-    // 确保每次query更新时都会调用searchMovies
     LaunchedEffect(query) {
         if (query.isNotEmpty()) {
             movieViewModel.searchMovies(query)
         }
     }
-     */
 
     MovieSearchPageImpl(
         query = query,
         onQueryChanged = { newQuery -> movieViewModel.updateQueryText(newQuery) },  // 更新查询文本
-        movies = movies
+        movies = movies ?: emptyList()
     )
 
     // 当查询文本变化时，进行电影搜索

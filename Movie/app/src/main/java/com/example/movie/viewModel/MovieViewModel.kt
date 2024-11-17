@@ -4,6 +4,7 @@ import android.telecom.Call
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import coil3.util.Logger
 import com.example.movie.Network.ApiService
 import com.example.movie.model.Movie
 import com.example.movie.model.MovieSearchResponse
@@ -47,11 +48,29 @@ class MovieViewModel : ViewModel() {
             override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
                 if (response.isSuccessful) {
                     val responseBody = response.body?.string()
+                    if (responseBody.isNullOrEmpty()) {
+                        _errorMessage.postValue("Response body is null")
+                        return
+                    }
                     val gson = Gson()
                     val movieSearchResponse = gson.fromJson(responseBody, MovieSearchResponse::class.java)
 
-                    _movieList.postValue(movieSearchResponse.Search)
-                    // 更新 LiveData
+                    if (movieSearchResponse?.Response == "True") {
+                        val movies = movieSearchResponse?.search?.map { movie ->
+                            Movie(
+                                imdbID = movie.imdbID,
+                                title = movie.title,
+                                poster = movie.poster,  // 如果 poster 是 null，使用空字符串
+                                year = movie.year ?: "Unknown",  // 如果 year 是 null，显示 "Unknown"
+                                genre = movie.genre ?: "Not Available",  // 如果 genre 是 null，显示 "Not Available"
+                                director = movie.director ?: "Unknown",  // 如果 director 是 null，显示 "Unknown"
+                                country = movie.country ?: "Unknown"  // 如果 country 是 null，显示 "Unknown"
+                            )
+                        } ?: emptyList()
+                        _movieList.postValue(movies)
+                    } else {
+                        _errorMessage.postValue("No results found")
+                    }
                 } else {
                     _errorMessage.postValue("Request failed with status: ${response.code}")
                     // Handle error
